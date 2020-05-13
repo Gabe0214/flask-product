@@ -1,5 +1,5 @@
 venv/
-config.cfg
+config
 __pycache__/
 instance/
 .cache/
