@@ -103,8 +103,8 @@ def add_product():
     description = request.json['description']
     price = request.json['price']
     qty = request.json['qty']
-
-    new_product = Product(name, description, price, qty)
+    image_url = request.json['image_url']
+    new_product = Product(name, description, price, qty, image_url)
 
     db.session.add(new_product)
     db.session.commit()
