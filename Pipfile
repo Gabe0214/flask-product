@@ -16,7 +16,7 @@ flask-migrate = "*"
 flask-bcrypt = "*"
 gunicorn = "*"
 python-dotenv = "*"
-dot-env = "*"
+
 
 [requires]
 python_version = "3.8"
