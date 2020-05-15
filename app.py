@@ -8,13 +8,16 @@ import datetime
 from functools import wraps
 # Init App
 import os
+
 app = Flask(__name__)
-basedir = os.path.abspath(os.path.dirname(__file__))
+if app.config['ENV'] == 'development':
+    app.config.from_object('settings.DevelopmentConfig')
+else:
+    app.config.from_object('settings.ProductionConfig')
+# basedir = os.path.abspath(os.path.dirname(__file__))
 bcrypt = Bcrypt(app)
 
 # config env variable setup
-
-app.config.from_envvar('APP_SETTINGS')
 
 
 # Init db
@@ -211,7 +214,7 @@ def login():
     
    if bcrypt.check_password_hash(user.user_password, password):
         token = jwt.encode({'user_name': user.user_name, 'admin': user.admin, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
-
+        print(app.config['FLASK_ENV'])
         return jsonify({'token': token.decode('UTF-8')})
    return jsonify({"message": "invalid credentials"})
         
@@ -232,5 +235,5 @@ def get_all_users(current_user):
 # run server
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
  

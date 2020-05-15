@@ -4,3 +4,4 @@ instance/
 .cache/
 variables.cfg
 .imports.swp
+.env

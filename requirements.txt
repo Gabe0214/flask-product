@@ -25,6 +25,7 @@ pipenv==2018.11.26
 pycparser==2.20
 PyJWT==1.4.2
 python-dateutil==2.8.1
+python-dotenv==0.13.0
 python-editor==1.0.4
 six==1.14.0
 SQLAlchemy==1.3.17
