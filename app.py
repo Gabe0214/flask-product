@@ -99,13 +99,15 @@ def token_required(f):
 
 @app.route('/product', methods=['POST'])
 def add_product():
+
     name = request.json['name']
     description = request.json['description']
     price = request.json['price']
     qty = request.json['qty']
     image_url = request.json['image_url']
     new_product = Product(name, description, price, qty, image_url)
-
+    if Product.query.filter_by(name= name).first():
+        return jsonify({"msg": "product already exist"})
     db.session.add(new_product)
     db.session.commit()
 
