@@ -6,6 +6,7 @@ from flask_bcrypt import Bcrypt
 import jwt
 import datetime
 from functools import wraps
+from flask_cors import CORS
 # Init App
 import os
 
@@ -15,6 +16,7 @@ if app.config['ENV'] == 'development':
 else:
     app.config.from_object('settings.ProductionConfig')
 # basedir = os.path.abspath(os.path.dirname(__file__))
+CORS(app)
 bcrypt = Bcrypt(app)
 
 # config env variable setup
