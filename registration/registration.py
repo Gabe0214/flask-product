@@ -42,6 +42,6 @@ def login():
             {'user_name': user.user_name, 'admin': user.admin, 'exp': datetime.datetime.utcnow() +
              datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
 
-        print(app.config['FLASK_ENV'])
         return jsonify({'token': token.decode('UTF-8')})
+
    return jsonify({"message": "invalid credentials"})
