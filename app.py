@@ -102,94 +102,7 @@ bcrypt = Bcrypt(app)
 #                 return jsonify({"message":"token is invalid"}), 401
 #         return f(current_user, *args, **kwargs)
 #     return decorated
-#
-# @app.route('/product', methods=['POST'])
-# def add_product():
-#
-#     name = request.json['name']
-#     description = request.json['description']
-#     price = request.json['price']
-#     qty = request.json['qty']
-#     image_url = request.json['image_url']
-#     new_product = Product(name, description, price, qty, image_url)
-#     if Product.query.filter_by(name= name).first():
-#         return jsonify({"msg": "product already exist"})
-#     db.session.add(new_product)
-#     db.session.commit()
-#
-#     return product_schema.jsonify(new_product)
-# # get all products
-#
-#
-# @app.route('/product', methods =['GET'])
-# def get_products():
-#     all_products = Product.query.all()
-#     result = products_schema.dump(all_products)
-#     return jsonify(result)
-#
-#
-# # GET a single product
-# @app.route('/product/<id>', methods =['GET'])
-# def get_product(id):
-#     product = Product.query.get(id)
-#     return product_schema.jsonify(product)
-#
-#
-#
-# # Update a product
-#
-#
-# @app.route('/product/<id>', methods=['PUT'])
-# def update_product(id):
-#     product = Product.query.get(id)
-#     if not product:
-#         return jsonify({"message": "product does not exist"})
-#     else:
-#         name = request.json['name']
-#         description = request.json['description']
-#         price = request.json['price']
-#         qty = request.json['qty']
-#         image_url = request.json['image_url']
-#
-#         product.name = name
-#         product.description = description
-#         product.price = price
-#         product.qty = qty
-#         product.image_url = image_url
-#         db.session.commit()
-#         return product_schema.jsonify(product)
-# # Delete a product
-#
-#
-# @app.route('/product/<id>', methods=['DELETE'])
-# def del_product(id):
-#     product = Product.query.get(id)
-#     if not id:
-#         return jsonify({"msg": "id does not exist"})
-#     else:
-#         db.session.delete(product)
-#         db.session.commit()
-#         return jsonify({"msg": "product deleted"})
-#
-#
-# #Authentication is needed.
-# @app.route('/register', methods=['POST'])
-# def user_register():
-# # verify that user exist by checking the email, and username || implement some sort of middleware
-# # hash the password, so that it is not fully exposed
-#
-#     user_name = request.json['user_name']
-#     user_email = request.json['user_email']
-#     user_password = request.json['user_password']
-#     admin = False
-#     pw_hash = bcrypt.generate_password_hash(user_password)
-#
-#     new_user = Users(user_name, user_email, pw_hash, admin)
-#
-#     db.session.add(new_user)
-#     db.session.commit()
-#     return user_schema.jsonify(new_user)
-#
+
 #
 # # grant admin permission to user
 # @app.route('/admin/<user_id>', methods=['PUT'])
@@ -206,26 +119,7 @@ bcrypt = Bcrypt(app)
 #
 #
 #
-# ## token i given upon login success
-#
-# @app.route('/login', methods=['POST'])
-# def login():
-#    user_name = request.json['user_name']
-#    password = request.json['password']
-#
-#    if not user_name or not password:
-#     return make_response('Could not verify', 401, {'WWW-Authenticate' : 'Basic realm="Login Required'})
-#    user = Users.query.filter_by(user_name= user_name).first()
-#
-#
-#    if not user:
-#         return jsonify({"message": "user does not exist"})
-#
-#    if bcrypt.check_password_hash(user.user_password, password):
-#         token = jwt.encode({'user_name': user.user_name, 'admin': user.admin, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
-#         print(app.config['FLASK_ENV'])
-#         return jsonify({'token': token.decode('UTF-8')})
-#    return jsonify({"message": "invalid credentials"})
+
 #
 #
 # ## route for all users, if the user is an admin
@@ -241,7 +135,7 @@ bcrypt = Bcrypt(app)
 #     return jsonify(result)
 
 
-print(app.config['ENV'])
+
 # run server
 
 if __name__ == '__main__':
