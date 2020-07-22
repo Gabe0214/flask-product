@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-
+from flask_migrate import Migrate
 
 
 # # Init db
@@ -12,7 +12,7 @@ from flask_marshmallow import Marshmallow
 
 db = SQLAlchemy()
 ma = Marshmallow()
-
+migrate = Migrate()
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
