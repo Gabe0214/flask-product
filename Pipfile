@@ -17,6 +17,7 @@ flask-bcrypt = "*"
 gunicorn = "*"
 python-dotenv = "*"
 flask-cors = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.8"
