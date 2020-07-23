@@ -9,7 +9,7 @@ admin_route = Blueprint('admin_route', __name__, url_prefix='/admin')
 @token_required
 def get_all_users(current_user):
     if not current_user.admin:
-        return jsonify({"message": "You don not have admin privileges to access this route"})
+        return jsonify({"message": "You do not have admin privileges to access this route"})
 
     users = Users.query.all()
     result = users_schema.dump(users)
