@@ -15,10 +15,9 @@ def registration():
     user_email = request.json['user_email']
     user_password = request.json['user_password']
     admin = False
-    pw_hash = bcrypt.generate_password_hash(user_password)
+    pw_hash = bcrypt.generate_password_hash(user_password.encode("utf-8"))
 
-
-    new_user = Users(user_name, user_email, pw_hash, admin)
+    new_user = Users(user_name, user_email, pw_hash.decode("utf-8", "ignore"), admin)
     main_db.session.add(new_user)
     main_db.session.commit()
     return user_schema.jsonify(new_user)

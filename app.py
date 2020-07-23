@@ -26,8 +26,6 @@ app.app_context().push()
 
 CORS(app)
 bcrypt = Bcrypt(app)
-print('hi')
-print(app.config['SQLALCHEMY_DATABASE_URI'])
 # run server
 if __name__ == '__main__':
     app.run()

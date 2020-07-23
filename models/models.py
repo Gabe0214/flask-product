@@ -40,7 +40,7 @@ class Users(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(50), unique=True)
     user_email = db.Column(db.String(100), unique=True)
-    user_password = db.Column(db.String)
+    user_password = db.Column(db.String(90))
     admin = db.Column(db.Boolean)
 
     def __init__(self, user_name, user_email, user_password, admin):
