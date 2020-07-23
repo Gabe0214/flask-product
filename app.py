@@ -12,7 +12,7 @@ if app.config['ENV'] == 'development':
     app.config.from_object('settings.DevelopmentConfig')
 else:
     app.config.from_object('settings.ProductionConfig')
-    main_db.create_all()
+
 
 
 with app.app_context():
@@ -22,7 +22,7 @@ with app.app_context():
     app.register_blueprint(register)
     app.register_blueprint(product_route)
     app.register_blueprint(admin_route)
-
+    main_db.create_all()
 app.app_context().push()
 
 CORS(app)
