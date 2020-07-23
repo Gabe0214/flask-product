@@ -12,6 +12,7 @@ if app.config['ENV'] == 'development':
     app.config.from_object('settings.DevelopmentConfig')
 else:
     app.config.from_object('settings.ProductionConfig')
+    main_db.create_all()
 
 
 with app.app_context():
